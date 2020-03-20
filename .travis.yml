@@ -13,7 +13,7 @@ matrix:
       r: oldrel
     - os: linux
       dist: trusty
-     r: oldrel
+      r: oldrel
 
 ## This is just a temporary fix -- should be addressed with CRAN submission
 warnings_are_errors: false
