@@ -1,5 +1,10 @@
 Rpath
 =====
+
+<!-- badges: start -->
+[![Travis build status](https://travis-ci.com/NOAA-EDAB/Rpath.svg?branch=master)](https://travis-ci.com/NOAA-EDAB/Rpath)
+<!-- badges: end -->
+
 This is the repository for Rpath - the R version of the Ecopath with Ecosim model
 
 The new public facing repository (NOAA-EDAB/Rpath) was established for release with 
