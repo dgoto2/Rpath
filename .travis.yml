@@ -7,7 +7,7 @@ cache: packages
 matrix:
   include:
     - os: osx
-      osx_image: xcode8.1
+      osx_image: xcode8.3
       disable_homebrew: true
       r: oldrel
     - os: linux
@@ -42,8 +42,10 @@ before_install:
   - echo "CXX1X=g++$(VER)" >> ~/.R/Makevars
   - echo "FC=gfortran$(VER)"       >> ~/.R/Makevars
   - echo "F77=gfortran$(VER)"      >> ~/.R/Makevars
-  - sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-8 60 --slave /usr/bin/g++ g++ /usr/bin/g++-8
-  - sudo update-alternatives --install /usr/bin/gfortran gfortran /usr/bin/gfortran-8 60
+  - if [ "${TRAVIS_OS_NAME}" = "linux" ]; then
+    sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-8 60 --slave /usr/bin/g++ g++ /usr/bin/g++-8;
+    sudo update-alternatives --install /usr/bin/gfortran gfortran /usr/bin/gfortran-8 60;
+    fi
   
 notifications:
   email:
