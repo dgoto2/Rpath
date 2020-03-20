@@ -1,9 +1,20 @@
 # R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
 # Adapted from https://github.com/r-pkg-examples/rcpp-cpp11-usage
 
-language: R
-sudo: false
+language: r
 cache: packages
+sudo: false
+
+matrix:
+  include:
+    - os: osx
+      osx_image: xcode8
+      disable_homebrew: true
+      r: oldrel
+    - os: linux
+      dist: trusty
+     r: oldrel
+
 ## This is just a temporary fix -- should be addressed with CRAN submission
 warnings_are_errors: false
 
@@ -32,3 +43,8 @@ before_install:
   - echo "F77=gfortran$(VER)"      >> ~/.R/Makevars
   - sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-8 60 --slave /usr/bin/g++ g++ /usr/bin/g++-8
   - sudo update-alternatives --install /usr/bin/gfortran gfortran /usr/bin/gfortran-8 60
+  
+notifications:
+  email:
+    on_success: never
+    on_failure: never
